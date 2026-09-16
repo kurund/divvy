@@ -50,16 +50,17 @@
       .join("");
   }
 
-  // Warm, editorial avatar palette — no saturated tech-emerald.
+  // 8 hue-differentiated tints — muted enough to read editorial,
+  // saturated enough that adjacent members don't blur together.
   const AVATAR_TINTS = [
-    "bg-[#e8d9c2] text-[#6b4a1e]", // ochre
-    "bg-[#d8e0e8] text-[#2a3a5c]", // dusty blue
-    "bg-[#e8d3cc] text-[#7a3524]", // terracotta
-    "bg-[#d9e3d5] text-[#3d5236]", // sage
-    "bg-[#dfd7e8] text-[#4a3966]", // plum
-    "bg-[#e8e0c9] text-[#605022]", // straw
-    "bg-[#d5dfe0] text-[#2e4a4d]", // slate teal
-    "bg-[#e5d1cf] text-[#6d3838]", // rose brown
+    "bg-[#f0c9b0] text-[#7a3418]", // terracotta
+    "bg-[#b8d5b2] text-[#254a20]", // sage
+    "bg-[#a5c2df] text-[#1e3a63]", // dusty blue
+    "bg-[#e6b96b] text-[#5c3810]", // mustard
+    "bg-[#d0b8e0] text-[#432a63]", // lavender
+    "bg-[#f0b8c2] text-[#701f36]", // rose
+    "bg-[#9ecdc8] text-[#12454a]", // teal
+    "bg-[#e0c4a0] text-[#5c3d15]", // wheat
   ];
   function tint(id: string): string {
     let hash = 0;
@@ -124,7 +125,7 @@
             Group
           </p>
           <h1
-            class="mt-1 truncate text-3xl tracking-tight sm:text-4xl"
+            class="mt-1 break-words text-2xl leading-tight tracking-tight sm:text-3xl"
             style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600; letter-spacing: -0.02em;"
           >
             {data.group.name}
