@@ -412,7 +412,7 @@
             bind:value={expenseDescription}
             required
             maxlength="120"
-            placeholder="Pizza, cab, hotel…"
+            placeholder="Biryani, cab, fuel…"
             class="w-full rounded-xl border-0 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-200 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-emerald-500"
           />
         </div>
