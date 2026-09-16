@@ -19,7 +19,7 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap"
   />
-  <title>Divvy — split expenses with friends</title>
+  <title>Divvy - split expenses with friends</title>
   <meta
     name="description"
     content="Create a group, share a link, and split expenses fairly. No sign-up."

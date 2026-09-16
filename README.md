@@ -1,6 +1,6 @@
 # Divvy
 
-Split expenses with friends — trips, dinners, roommates. Create a group, share
+Split expenses with friends - trips, dinners, roommates. Create a group, share
 the link, everyone logs what they paid, and the app tells you the fewest
 transfers needed to settle up.
 
