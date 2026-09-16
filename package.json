@@ -11,20 +11,26 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --write \"src/**/*.{ts,svelte,css}\" \"*.{ts,json,md}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,svelte,css}\" \"*.{ts,json,md}\""
+    "format:check": "prettier --check \"src/**/*.{ts,svelte,css}\" \"*.{ts,json,md}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^7.0.1",
     "@sveltejs/kit": "^2.63.0",
     "@sveltejs/vite-plugin-svelte": "^7.1.2",
     "@tailwindcss/vite": "^4.3.3",
+    "@vitest/ui": "^5.0.1",
+    "jsdom": "^30.0.1",
     "prettier": "^3.9.6",
     "prettier-plugin-svelte": "^4.1.1",
     "svelte": "^5.56.1",
     "svelte-check": "^4.6.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "vite": "^8.0.16"
+    "vite": "^8.0.16",
+    "vitest": "^5.0.1"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.116.0",

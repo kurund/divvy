@@ -19,4 +19,8 @@ export default defineConfig({
       adapter: adapter(),
     }),
   ],
+  test: {
+    include: ["src/**/*.{test,spec}.{ts,js}"],
+    environment: "jsdom",
+  },
 });
