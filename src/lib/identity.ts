@@ -1,7 +1,7 @@
 // Per-browser identity: which member the user has claimed to be in a group.
 // Stored as a map of { groupSlug: memberId } in localStorage.
 
-const KEY = 'splitpay:identity:v1';
+const KEY = 'divvy:identity:v1';
 
 function readMap(): Record<string, string> {
 	if (typeof localStorage === 'undefined') return {};

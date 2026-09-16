@@ -14,21 +14,28 @@
 	}
 </script>
 
-<section class="space-y-8">
-	<div class="space-y-2">
-		<h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
-			Split expenses with your group.
+<section class="space-y-10">
+	<div class="space-y-3 text-center sm:text-left">
+		<span
+			class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 ring-1 ring-inset ring-emerald-600/20"
+		>
+			<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+			No sign-up. Share a link, split expenses.
+		</span>
+		<h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+			Split what you spend.
+			<span class="text-emerald-600">Settle in a click.</span>
 		</h1>
-		<p class="text-neutral-600 dark:text-neutral-400">
-			Create a group, share the link, and everyone can log what they paid. We&rsquo;ll show who
-			owes whom and the fewest transfers to settle up.
+		<p class="max-w-xl text-base text-slate-600 sm:text-lg">
+			Trips, dinners, roommates. Create a group, drop the link in your chat, and let everyone log
+			what they paid. Divvy shows the fewest transfers to square up.
 		</p>
 	</div>
 
 	<form
 		method="POST"
 		action="?/create"
-		class="space-y-5 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
+		class="space-y-6 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-8"
 		use:enhance={() => {
 			submitting = true;
 			return async ({ update }) => {
@@ -38,28 +45,28 @@
 		}}
 	>
 		<div>
-			<label for="name" class="mb-1 block text-sm font-medium">Group name</label>
+			<label for="name" class="mb-1.5 block text-sm font-medium text-slate-700">Group name</label>
 			<input
 				id="name"
 				name="name"
 				required
 				maxlength="80"
-				placeholder="Goa trip, Roommates, Dinner at Julio's..."
-				class="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-neutral-700 dark:bg-neutral-950"
+				placeholder="Goa trip, Roommates, Dinner at Julio's…"
+				class="w-full rounded-xl border-0 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-200 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-emerald-500"
 			/>
 		</div>
 
 		<div>
-			<label for="currency" class="mb-1 block text-sm font-medium">Currency</label>
+			<label for="currency" class="mb-1.5 block text-sm font-medium text-slate-700">Currency</label>
 			<select
 				id="currency"
 				name="currency"
-				class="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-neutral-700 dark:bg-neutral-950"
+				class="w-full rounded-xl border-0 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-200 focus:bg-white focus:ring-2 focus:ring-emerald-500"
 			>
 				<option value="INR">INR — Indian Rupee</option>
+				<option value="GBP">GBP — British Pound</option>
 				<option value="USD">USD — US Dollar</option>
 				<option value="EUR">EUR — Euro</option>
-				<option value="GBP">GBP — British Pound</option>
 				<option value="JPY">JPY — Japanese Yen</option>
 				<option value="AUD">AUD — Australian Dollar</option>
 				<option value="CAD">CAD — Canadian Dollar</option>
@@ -68,12 +75,12 @@
 		</div>
 
 		<div>
-			<div class="mb-1 flex items-center justify-between">
-				<span class="text-sm font-medium">Members</span>
+			<div class="mb-1.5 flex items-center justify-between">
+				<span class="text-sm font-medium text-slate-700">Members</span>
 				<button
 					type="button"
 					onclick={addMemberRow}
-					class="text-xs font-medium text-emerald-700 hover:text-emerald-800 dark:text-emerald-400"
+					class="text-xs font-semibold text-emerald-700 hover:text-emerald-800"
 				>
 					+ Add member
 				</button>
@@ -86,14 +93,14 @@
 							bind:value={members[i]}
 							placeholder="Name"
 							maxlength="60"
-							class="flex-1 rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-neutral-700 dark:bg-neutral-950"
+							class="flex-1 rounded-xl border-0 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-200 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-emerald-500"
 						/>
 						{#if members.length > 2}
 							<button
 								type="button"
 								onclick={() => removeMemberRow(i)}
 								aria-label="Remove member"
-								class="rounded-lg border border-neutral-300 px-2 text-sm text-neutral-500 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800"
+								class="rounded-xl px-3 text-slate-400 ring-1 ring-inset ring-slate-200 hover:bg-slate-50 hover:text-slate-700"
 							>
 								&times;
 							</button>
@@ -101,11 +108,11 @@
 					</div>
 				{/each}
 			</div>
-			<p class="mt-1 text-xs text-neutral-500">You can add more members later.</p>
+			<p class="mt-2 text-xs text-slate-500">You can add more members later.</p>
 		</div>
 
 		{#if form?.error}
-			<div class="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-300">
+			<div class="rounded-xl bg-red-50 px-3.5 py-2.5 text-sm text-red-700 ring-1 ring-inset ring-red-100">
 				{form.error}
 			</div>
 		{/if}
@@ -113,9 +120,24 @@
 		<button
 			type="submit"
 			disabled={submitting}
-			class="w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:opacity-60"
+			class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:opacity-60"
 		>
-			{submitting ? 'Creating…' : 'Create group'}
+			{submitting ? 'Creating…' : 'Create group →'}
 		</button>
 	</form>
+
+	<ul class="grid gap-4 text-sm text-slate-600 sm:grid-cols-3">
+		<li class="rounded-2xl bg-white/60 p-4 ring-1 ring-slate-200/70">
+			<p class="mb-1 font-semibold text-slate-900">🔗 Shareable link</p>
+			<p>The URL is the invite. No accounts or emails.</p>
+		</li>
+		<li class="rounded-2xl bg-white/60 p-4 ring-1 ring-slate-200/70">
+			<p class="mb-1 font-semibold text-slate-900">⚖️ Live balances</p>
+			<p>Every add updates who owes whom instantly.</p>
+		</li>
+		<li class="rounded-2xl bg-white/60 p-4 ring-1 ring-slate-200/70">
+			<p class="mb-1 font-semibold text-slate-900">✨ Fewest transfers</p>
+			<p>Smart settlement means less back-and-forth.</p>
+		</li>
+	</ul>
 </section>
