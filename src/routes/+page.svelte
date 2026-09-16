@@ -60,27 +60,6 @@
     </div>
 
     <div>
-      <label
-        for="currency"
-        class="mb-1.5 block text-sm font-medium text-slate-700">Currency</label
-      >
-      <select
-        id="currency"
-        name="currency"
-        class="w-full rounded-xl border-0 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-200 focus:bg-white focus:ring-2 focus:ring-emerald-500"
-      >
-        <option value="GBP">GBP — British Pound</option>
-        <option value="INR">INR — Indian Rupee</option>
-        <option value="USD">USD — US Dollar</option>
-        <option value="EUR">EUR — Euro</option>
-        <option value="JPY">JPY — Japanese Yen</option>
-        <option value="AUD">AUD — Australian Dollar</option>
-        <option value="CAD">CAD — Canadian Dollar</option>
-        <option value="SGD">SGD — Singapore Dollar</option>
-      </select>
-    </div>
-
-    <div>
       <div class="mb-1.5 flex items-center justify-between">
         <span class="text-sm font-medium text-slate-700">Members</span>
         <button
@@ -115,6 +94,24 @@
         {/each}
       </div>
       <p class="mt-2 text-xs text-slate-500">You can add more members later.</p>
+    </div>
+
+    <div>
+      <label
+        for="currency"
+        class="mb-1.5 block text-sm font-medium text-slate-700">Currency</label
+      >
+      <select
+        id="currency"
+        name="currency"
+        class="w-full rounded-xl border-0 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-200 focus:bg-white focus:ring-2 focus:ring-emerald-500"
+      >
+        <option value="GBP">GBP - British Pound</option>
+        <option value="INR">INR - Indian Rupee</option>
+        <option value="USD">USD - US Dollar</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+      </select>
     </div>
 
     {#if form?.error}
