@@ -1,6 +1,6 @@
 import adapter from "@sveltejs/adapter-auto";
 import { sveltekit } from "@sveltejs/kit/vite";
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
@@ -20,7 +20,10 @@ export default defineConfig({
     }),
   ],
   test: {
-    include: ["src/**/*.{test,spec}.{ts,js}"],
+    include: [
+      "src/**/*.{test,spec}.{ts,js}",
+      "tests/**/*.{test,spec}.{ts,js}",
+    ],
     environment: "jsdom",
   },
 });
