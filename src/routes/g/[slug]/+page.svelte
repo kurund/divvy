@@ -473,9 +473,9 @@
           {#each data.members as m (m.id)}
             {@const checked = expenseParticipants.has(m.id)}
             <label
-              class="inline-flex cursor-pointer select-none items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition {checked
-                ? 'bg-emerald-600 text-white shadow-sm'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}"
+              class="inline-flex cursor-pointer select-none items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium ring-1 ring-inset transition {checked
+                ? 'bg-emerald-50 text-emerald-800 ring-emerald-500/40'
+                : 'bg-white text-slate-500 ring-slate-200 hover:text-slate-700 hover:ring-slate-300'}"
             >
               <input
                 type="checkbox"
@@ -657,7 +657,7 @@
       <button
         type="submit"
         disabled={addingMember}
-        class="rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 disabled:opacity-60"
+        class="rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:opacity-60"
       >
         Add
       </button>
