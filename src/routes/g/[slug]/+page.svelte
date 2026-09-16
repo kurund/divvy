@@ -50,16 +50,16 @@
       .join("");
   }
 
-  // Deterministic avatar tint from a member id
+  // Warm, editorial avatar palette — no saturated tech-emerald.
   const AVATAR_TINTS = [
-    "bg-emerald-100 text-emerald-800",
-    "bg-sky-100 text-sky-800",
-    "bg-amber-100 text-amber-800",
-    "bg-fuchsia-100 text-fuchsia-800",
-    "bg-indigo-100 text-indigo-800",
-    "bg-rose-100 text-rose-800",
-    "bg-teal-100 text-teal-800",
-    "bg-orange-100 text-orange-800",
+    "bg-[#e8d9c2] text-[#6b4a1e]", // ochre
+    "bg-[#d8e0e8] text-[#2a3a5c]", // dusty blue
+    "bg-[#e8d3cc] text-[#7a3524]", // terracotta
+    "bg-[#d9e3d5] text-[#3d5236]", // sage
+    "bg-[#dfd7e8] text-[#4a3966]", // plum
+    "bg-[#e8e0c9] text-[#605022]", // straw
+    "bg-[#d5dfe0] text-[#2e4a4d]", // slate teal
+    "bg-[#e5d1cf] text-[#6d3838]", // rose brown
   ];
   function tint(id: string): string {
     let hash = 0;
@@ -114,32 +114,29 @@
 
 <section class="space-y-8">
   <!-- Header card -->
-  <div
-    class="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200"
-  >
-    <div
-      class="bg-gradient-to-br from-emerald-500 to-teal-600 px-6 py-6 text-white sm:px-8"
-    >
+  <div class="overflow-hidden rounded-2xl bg-card shadow-sm ring-1 ring-line">
+    <div class="bg-navy px-6 py-6 text-white sm:px-8">
       <div class="flex flex-wrap items-start justify-between gap-3">
         <div class="min-w-0">
           <p
-            class="text-xs font-medium uppercase tracking-wider text-emerald-100"
+            class="text-xs font-medium uppercase tracking-[0.14em] text-white/60"
           >
             Group
           </p>
           <h1
-            class="mt-0.5 truncate text-2xl font-bold tracking-tight sm:text-3xl"
+            class="mt-1 truncate text-3xl tracking-tight sm:text-4xl"
+            style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600; letter-spacing: -0.02em;"
           >
             {data.group.name}
           </h1>
-          <p class="mt-1 text-sm text-emerald-50/90">
+          <p class="mt-1 text-sm text-white/70">
             {data.members.length} members · {data.group.currency}
           </p>
         </div>
         <button
           type="button"
           onclick={copyShareLink}
-          class="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-medium text-white ring-1 ring-inset ring-white/25 backdrop-blur transition hover:bg-white/25"
+          class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white ring-1 ring-inset ring-white/20 backdrop-blur transition hover:bg-white/20"
         >
           {#if copyState === "copied"}
             <svg
@@ -174,30 +171,37 @@
         </button>
       </div>
     </div>
-    <div
-      class="grid grid-cols-3 divide-x divide-slate-200 bg-white text-center"
-    >
+    <div class="grid grid-cols-3 divide-x divide-line bg-card text-center">
       <div class="px-3 py-4">
-        <p class="text-xs font-medium uppercase tracking-wider text-slate-500">
+        <p class="text-xs font-medium uppercase tracking-wider text-ink-mute">
           Total spent
         </p>
-        <p class="mt-1 text-lg font-semibold text-slate-900">
+        <p
+          class="mt-1 text-xl text-ink"
+          style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600;"
+        >
           {formatCents(totalSpentCents, data.group.currency)}
         </p>
       </div>
       <div class="px-3 py-4">
-        <p class="text-xs font-medium uppercase tracking-wider text-slate-500">
+        <p class="text-xs font-medium uppercase tracking-wider text-ink-mute">
           Expenses
         </p>
-        <p class="mt-1 text-lg font-semibold text-slate-900">
+        <p
+          class="mt-1 text-xl text-ink"
+          style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600;"
+        >
           {data.expenses.length}
         </p>
       </div>
       <div class="px-3 py-4">
-        <p class="text-xs font-medium uppercase tracking-wider text-slate-500">
+        <p class="text-xs font-medium uppercase tracking-wider text-ink-mute">
           Transfers
         </p>
-        <p class="mt-1 text-lg font-semibold text-slate-900">
+        <p
+          class="mt-1 text-xl text-ink"
+          style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600;"
+        >
           {settlements.length}
         </p>
       </div>
@@ -206,7 +210,7 @@
 
   {#if identityLoaded && myMemberId}
     <div
-      class="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-emerald-50 px-4 py-2.5 text-sm text-emerald-900 ring-1 ring-inset ring-emerald-100"
+      class="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-navy-soft px-4 py-2.5 text-sm text-navy ring-1 ring-inset ring-navy/10"
     >
       <span class="inline-flex items-center gap-2">
         <span
@@ -221,7 +225,7 @@
       <button
         type="button"
         onclick={forgetIdentity}
-        class="text-xs font-medium text-emerald-800 underline underline-offset-2 hover:no-underline"
+        class="text-xs font-medium text-navy underline underline-offset-2 hover:no-underline"
       >
         Not you?
       </button>
@@ -229,9 +233,9 @@
   {/if}
 
   {#if identityLoaded && showIdentityPicker}
-    <div class="rounded-2xl bg-amber-50 p-5 ring-1 ring-inset ring-amber-200">
-      <h2 class="mb-1 font-semibold text-amber-900">Who are you?</h2>
-      <p class="mb-3 text-sm text-amber-800">
+    <div class="rounded-2xl bg-gold-tint p-5 ring-1 ring-inset ring-gold/30">
+      <h2 class="mb-1 font-semibold text-ink">Who are you?</h2>
+      <p class="mb-3 text-sm text-ink-soft">
         Pick your name so we can tag expenses you add. You&rsquo;ll only be able
         to edit or delete expenses you created.
       </p>
@@ -240,7 +244,7 @@
           <button
             type="button"
             onclick={() => claimIdentity(m.id)}
-            class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-inset ring-amber-200 transition hover:bg-amber-100"
+            class="inline-flex items-center gap-2 rounded-full bg-card px-3 py-1.5 text-sm font-medium text-ink shadow-sm ring-1 ring-inset ring-gold/30 transition hover:bg-gold-soft"
           >
             <span
               class="inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold {tint(
@@ -253,7 +257,7 @@
           </button>
         {/each}
       </div>
-      <p class="mt-3 text-xs text-amber-700">
+      <p class="mt-3 text-xs text-ink-mute">
         Not listed? Add yourself as a member below first.
       </p>
     </div>
@@ -261,19 +265,24 @@
 
   <!-- Balances + settlements -->
   <div class="grid gap-4 sm:grid-cols-2">
-    <div class="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+    <div class="rounded-2xl bg-card p-5 shadow-sm ring-1 ring-line">
       <h2
-        class="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500"
+        class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink-mute"
       >
         Balances
       </h2>
       {#if balances.every((b) => b.net_cents === 0)}
         <div class="py-6 text-center">
-          <p class="text-2xl">🎉</p>
-          <p class="mt-1 text-sm text-slate-500">All settled up.</p>
+          <p
+            class="text-lg text-ink"
+            style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600;"
+          >
+            All settled up.
+          </p>
+          <p class="mt-0.5 text-xs text-ink-mute">Nothing owed either way.</p>
         </div>
       {:else}
-        <ul class="space-y-2">
+        <ul class="space-y-2.5">
           {#each balances as b (b.member_id)}
             <li class="flex items-center justify-between">
               <span class="inline-flex items-center gap-2">
@@ -284,24 +293,24 @@
                 >
                   {initials(memberName(b.member_id))}
                 </span>
-                <span class="text-sm text-slate-800"
-                  >{memberName(b.member_id)}</span
-                >
+                <span class="text-sm text-ink">
+                  {memberName(b.member_id)}
+                </span>
               </span>
               {#if b.net_cents > 0}
                 <span
-                  class="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/15"
+                  class="rounded-full bg-gold-tint px-2.5 py-0.5 text-xs font-semibold text-gold ring-1 ring-inset ring-gold/25"
                 >
                   gets +{formatCents(b.net_cents, data.group.currency)}
                 </span>
               {:else if b.net_cents < 0}
                 <span
-                  class="rounded-full bg-rose-50 px-2 py-0.5 text-xs font-semibold text-rose-700 ring-1 ring-inset ring-rose-600/15"
+                  class="rounded-full bg-clay-tint px-2.5 py-0.5 text-xs font-semibold text-clay ring-1 ring-inset ring-clay/25"
                 >
                   owes {formatCents(-b.net_cents, data.group.currency)}
                 </span>
               {:else}
-                <span class="text-xs text-slate-400">settled</span>
+                <span class="text-xs text-ink-mute">settled</span>
               {/if}
             </li>
           {/each}
@@ -309,22 +318,27 @@
       {/if}
     </div>
 
-    <div class="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+    <div class="rounded-2xl bg-card p-5 shadow-sm ring-1 ring-line">
       <h2
-        class="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500"
+        class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink-mute"
       >
         Suggested transfers
       </h2>
       {#if settlements.length === 0}
         <div class="py-6 text-center">
-          <p class="text-2xl">✨</p>
-          <p class="mt-1 text-sm text-slate-500">Nothing to transfer.</p>
+          <p
+            class="text-lg text-ink"
+            style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600;"
+          >
+            Nothing to transfer.
+          </p>
+          <p class="mt-0.5 text-xs text-ink-mute">Everyone is even.</p>
         </div>
       {:else}
         <ul class="space-y-2">
           {#each settlements as s (s.from_member_id + s.to_member_id + s.amount_cents)}
             <li
-              class="flex items-center gap-2 rounded-2xl bg-slate-50 px-3 py-2 text-sm"
+              class="flex items-center gap-2 rounded-xl bg-paper px-3 py-2 text-sm ring-1 ring-line-soft"
             >
               <span
                 class="inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold {tint(
@@ -334,13 +348,13 @@
                 {initials(memberName(s.from_member_id))}
               </span>
               <span class="min-w-0 flex-1 truncate">
-                <span class="font-medium text-slate-900"
-                  >{memberName(s.from_member_id)}</span
-                >
-                <span class="text-slate-400"> → </span>
-                <span class="font-medium text-slate-900"
-                  >{memberName(s.to_member_id)}</span
-                >
+                <span class="font-medium text-ink">
+                  {memberName(s.from_member_id)}
+                </span>
+                <span class="text-ink-mute"> → </span>
+                <span class="font-medium text-ink">
+                  {memberName(s.to_member_id)}
+                </span>
               </span>
               <span
                 class="inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold {tint(
@@ -350,7 +364,7 @@
                 {initials(memberName(s.to_member_id))}
               </span>
               <span
-                class="ml-1 rounded-full bg-emerald-600 px-2.5 py-0.5 text-xs font-semibold text-white"
+                class="ml-1 rounded-full bg-navy px-2.5 py-0.5 text-xs font-semibold text-white"
               >
                 {formatCents(s.amount_cents, data.group.currency)}
               </span>
@@ -362,10 +376,10 @@
   </div>
 
   <!-- Add expense -->
-  <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+  <div class="rounded-2xl bg-card p-6 shadow-sm ring-1 ring-line">
     <div class="mb-4 flex items-center gap-2">
       <span
-        class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700"
+        class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-navy-soft text-navy"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -378,7 +392,12 @@
           />
         </svg>
       </span>
-      <h2 class="font-semibold text-slate-900">Add an expense</h2>
+      <h2
+        class="text-lg text-ink"
+        style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600;"
+      >
+        Add an expense
+      </h2>
     </div>
     <form
       method="POST"
@@ -403,9 +422,10 @@
         <div>
           <label
             for="description"
-            class="mb-1.5 block text-sm font-medium text-slate-700"
-            >Description</label
+            class="mb-1.5 block text-sm font-medium text-ink"
           >
+            Description
+          </label>
           <input
             id="description"
             name="description"
@@ -413,14 +433,11 @@
             required
             maxlength="120"
             placeholder="Biryani, cab, fuel…"
-            class="w-full rounded-xl border-0 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-200 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-emerald-500"
+            class="w-full rounded-lg border-0 bg-paper px-3.5 py-2.5 text-sm text-ink ring-1 ring-inset ring-line placeholder:text-ink-mute focus:bg-card focus:ring-2 focus:ring-navy"
           />
         </div>
         <div>
-          <label
-            for="amount"
-            class="mb-1.5 block text-sm font-medium text-slate-700"
-          >
+          <label for="amount" class="mb-1.5 block text-sm font-medium text-ink">
             Amount ({data.group.currency})
           </label>
           <input
@@ -430,22 +447,21 @@
             required
             inputmode="decimal"
             placeholder="0.00"
-            class="w-full rounded-xl border-0 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-200 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-emerald-500"
+            class="w-full rounded-lg border-0 bg-paper px-3.5 py-2.5 text-sm text-ink ring-1 ring-inset ring-line placeholder:text-ink-mute focus:bg-card focus:ring-2 focus:ring-navy"
           />
         </div>
       </div>
 
       <div>
-        <label
-          for="paid_by"
-          class="mb-1.5 block text-sm font-medium text-slate-700">Paid by</label
-        >
+        <label for="paid_by" class="mb-1.5 block text-sm font-medium text-ink">
+          Paid by
+        </label>
         <select
           id="paid_by"
           name="paid_by"
           bind:value={expensePaidBy}
           required
-          class="w-full rounded-xl border-0 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-200 focus:bg-white focus:ring-2 focus:ring-emerald-500"
+          class="w-full rounded-lg border-0 bg-paper px-3.5 py-2.5 text-sm text-ink ring-1 ring-inset ring-line focus:bg-card focus:ring-2 focus:ring-navy"
         >
           <option value="" disabled>Select…</option>
           {#each data.members as m (m.id)}
@@ -456,13 +472,13 @@
 
       <div>
         <div class="mb-1.5 flex items-center justify-between">
-          <span class="text-sm font-medium text-slate-700"
-            >Split equally between</span
-          >
+          <span class="text-sm font-medium text-ink">
+            Split equally between
+          </span>
           <button
             type="button"
             onclick={toggleAllParticipants}
-            class="text-xs font-semibold text-emerald-700 hover:text-emerald-800"
+            class="text-xs font-semibold text-navy hover:text-navy-dark"
           >
             {expenseParticipants.size === data.members.length
               ? "Clear all"
@@ -474,8 +490,8 @@
             {@const checked = expenseParticipants.has(m.id)}
             <label
               class="inline-flex cursor-pointer select-none items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium ring-1 ring-inset transition {checked
-                ? 'bg-emerald-50 text-emerald-800 ring-emerald-500/40'
-                : 'bg-white text-slate-500 ring-slate-200 hover:text-slate-700 hover:ring-slate-300'}"
+                ? 'bg-navy-soft text-navy ring-navy/25'
+                : 'bg-card text-ink-mute ring-line hover:text-ink hover:ring-ink/20'}"
             >
               <input
                 type="checkbox"
@@ -507,7 +523,7 @@
 
       {#if form?.addExpenseError}
         <div
-          class="rounded-xl bg-red-50 px-3.5 py-2.5 text-sm text-red-700 ring-1 ring-inset ring-red-100"
+          class="rounded-lg bg-clay-tint px-3.5 py-2.5 text-sm text-clay ring-1 ring-inset ring-clay/25"
         >
           {form.addExpenseError}
         </div>
@@ -516,7 +532,7 @@
       <button
         type="submit"
         disabled={submittingExpense}
-        class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:opacity-60"
+        class="inline-flex items-center justify-center gap-1.5 rounded-lg bg-navy px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-navy-dark disabled:opacity-60"
       >
         {submittingExpense ? "Saving…" : "Add expense"}
       </button>
@@ -524,21 +540,26 @@
   </div>
 
   <!-- Expenses list -->
-  <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-    <h2 class="mb-4 font-semibold text-slate-900">Expenses</h2>
+  <div class="rounded-2xl bg-card p-6 shadow-sm ring-1 ring-line">
+    <h2
+      class="mb-4 text-lg text-ink"
+      style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600;"
+    >
+      Expenses
+    </h2>
     {#if data.expenses.length === 0}
-      <p class="text-sm text-slate-500">
+      <p class="text-sm text-ink-mute">
         No expenses yet — add the first one above.
       </p>
     {:else}
-      <ul class="divide-y divide-slate-100">
+      <ul class="divide-y divide-line-soft">
         {#each data.expenses as exp (exp.id)}
           {@const canDelete =
             myMemberId != null &&
             (exp.created_by === null || exp.created_by === myMemberId)}
           <li class="flex items-start gap-3 py-3.5 first:pt-0 last:pb-0">
             <span
-              class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-xs font-bold {tint(
+              class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-xs font-bold {tint(
                 exp.paid_by,
               )}"
             >
@@ -546,19 +567,22 @@
             </span>
             <div class="min-w-0 flex-1">
               <div class="flex flex-wrap items-baseline justify-between gap-2">
-                <p class="truncate font-medium text-slate-900">
+                <p class="truncate font-medium text-ink">
                   {exp.description}
                 </p>
-                <p class="font-semibold text-slate-900">
+                <p
+                  class="text-ink"
+                  style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600;"
+                >
                   {formatCents(exp.amount_cents, data.group.currency)}
                 </p>
               </div>
-              <p class="mt-0.5 text-xs text-slate-500">
-                <span class="font-medium text-slate-700"
-                  >{memberName(exp.paid_by)}</span
-                >
+              <p class="mt-0.5 text-xs text-ink-mute">
+                <span class="font-medium text-ink-soft">
+                  {memberName(exp.paid_by)}
+                </span>
                 paid · split
-                <span class="text-slate-700">{exp.shares.length} ways</span>
+                <span class="text-ink-soft">{exp.shares.length} ways</span>
                 · {new Date(exp.created_at).toLocaleDateString(undefined, {
                   month: "short",
                   day: "numeric",
@@ -585,7 +609,7 @@
                 <button
                   type="submit"
                   aria-label="Delete expense"
-                  class="rounded-lg p-1.5 text-slate-300 transition hover:bg-rose-50 hover:text-rose-600"
+                  class="rounded-lg p-1.5 text-ink-mute/60 transition hover:bg-clay-tint hover:text-clay"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -608,7 +632,7 @@
     {/if}
     {#if form?.deleteExpenseError}
       <div
-        class="mt-3 rounded-xl bg-red-50 px-3.5 py-2.5 text-sm text-red-700 ring-1 ring-inset ring-red-100"
+        class="mt-3 rounded-lg bg-clay-tint px-3.5 py-2.5 text-sm text-clay ring-1 ring-inset ring-clay/25"
       >
         {form.deleteExpenseError}
       </div>
@@ -616,12 +640,17 @@
   </div>
 
   <!-- Members -->
-  <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-    <h2 class="mb-4 font-semibold text-slate-900">Members</h2>
+  <div class="rounded-2xl bg-card p-6 shadow-sm ring-1 ring-line">
+    <h2
+      class="mb-4 text-lg text-ink"
+      style="font-family: 'Fraunces', ui-serif, Georgia, serif; font-weight: 600;"
+    >
+      Members
+    </h2>
     <div class="mb-4 flex flex-wrap gap-2">
       {#each data.members as m (m.id)}
         <span
-          class="inline-flex items-center gap-2 rounded-full bg-slate-100 py-1 pl-1 pr-3 text-sm text-slate-700"
+          class="inline-flex items-center gap-2 rounded-full bg-paper py-1 pl-1 pr-3 text-sm text-ink ring-1 ring-inset ring-line-soft"
         >
           <span
             class="inline-flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold {tint(
@@ -652,19 +681,19 @@
         required
         maxlength="60"
         placeholder="Add another member"
-        class="flex-1 rounded-xl border-0 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-200 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-emerald-500"
+        class="flex-1 rounded-lg border-0 bg-paper px-3.5 py-2.5 text-sm text-ink ring-1 ring-inset ring-line placeholder:text-ink-mute focus:bg-card focus:ring-2 focus:ring-navy"
       />
       <button
         type="submit"
         disabled={addingMember}
-        class="rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:opacity-60"
+        class="rounded-lg bg-navy px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-navy-dark disabled:opacity-60"
       >
         Add
       </button>
     </form>
     {#if form?.addMemberError}
       <div
-        class="mt-2 rounded-xl bg-red-50 px-3.5 py-2.5 text-sm text-red-700 ring-1 ring-inset ring-red-100"
+        class="mt-2 rounded-lg bg-clay-tint px-3.5 py-2.5 text-sm text-clay ring-1 ring-inset ring-clay/25"
       >
         {form.addMemberError}
       </div>

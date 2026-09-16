@@ -1,13 +1,33 @@
 @import "tailwindcss";
 
+@theme {
+  --color-paper: #f5f1e8;
+  --color-paper-2: #ede6d5;
+  --color-card: #fdfaf3;
+  --color-ink: #1a2138;
+  --color-ink-soft: #5c5f6b;
+  --color-ink-mute: #8a8676;
+  --color-navy: #1e2b4a;
+  --color-navy-dark: #12192e;
+  --color-navy-soft: #e6e4ed;
+  --color-gold: #b28a4c;
+  --color-gold-soft: #f0e6ce;
+  --color-gold-tint: #f9f2df;
+  --color-clay: #a05545;
+  --color-clay-soft: #f0d9d2;
+  --color-clay-tint: #f7e9e3;
+  --color-line: #e0d9c6;
+  --color-line-soft: #ece5d3;
+}
+
 :root {
   color-scheme: light;
 }
 
 html,
 body {
-  background-color: #fbfaf7;
-  color: #0f172a;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
   font-family:
     "Inter",
     ui-sans-serif,
@@ -23,22 +43,9 @@ body {
 }
 
 body {
-  background-image:
-    radial-gradient(
-      1200px 500px at 15% -10%,
-      rgba(16, 185, 129, 0.1),
-      transparent 60%
-    ),
-    radial-gradient(
-      900px 500px at 100% 0%,
-      rgba(59, 130, 246, 0.07),
-      transparent 55%
-    );
-  background-attachment: fixed;
   min-height: 100vh;
 }
 
-/* Nicer form focus ring */
 :where(input, select, textarea, button):focus-visible {
   outline: none;
 }

@@ -17,31 +17,36 @@
   />
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap"
   />
   <title>Divvy — split expenses with friends</title>
   <meta
     name="description"
     content="Create a group, share a link, and split expenses fairly. No sign-up."
   />
-  <meta name="theme-color" content="#10b981" />
+  <meta name="theme-color" content="#1e2b4a" />
   <meta name="apple-mobile-web-app-title" content="Divvy" />
 </svelte:head>
 
 <div class="min-h-screen">
   <header
-    class="sticky top-0 z-10 border-b border-neutral-200/70 bg-white/70 backdrop-blur"
+    class="sticky top-0 z-10 border-b border-line/70 bg-paper/80 backdrop-blur"
   >
     <div
       class="mx-auto flex max-w-3xl items-center justify-between px-4 py-3.5"
     >
       <a href="/" class="flex items-center gap-2 font-semibold tracking-tight">
         <img src="/favicon.svg" alt="" class="h-7 w-7" />
-        <span class="text-lg text-slate-900">Divvy</span>
+        <span
+          class="text-lg text-ink"
+          style="font-family: 'Fraunces', ui-serif, Georgia, serif; letter-spacing: -0.02em;"
+        >
+          Divvy
+        </span>
       </a>
       <a
         href="/"
-        class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
+        class="rounded-full border border-line bg-card px-3 py-1.5 text-xs font-medium text-ink-soft shadow-sm transition hover:border-ink/20 hover:text-ink"
       >
         New group
       </a>
@@ -51,7 +56,7 @@
     {@render children()}
   </main>
   <footer
-    class="mx-auto max-w-3xl px-4 pb-10 pt-4 text-center text-xs text-slate-400"
+    class="mx-auto max-w-3xl px-4 pb-10 pt-4 text-center text-xs text-ink-mute"
   >
     Divvy · split fair, settle fast
   </footer>
